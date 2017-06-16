@@ -6,26 +6,51 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using UnityEngine;
+using UnityEditor;
 using System.Collections;
 
 
-namespace EPPZ.Utils
+namespace EPPZ.Utils.Editor
 {
 
 
-	public class ActivateOnAwake : MonoBehaviour
+	[InitializeOnLoad]
+	public class HandTool
 	{
 
 
-		public GameObject[] targets;
+		public static Tool previousTool;
+		public static bool spaceIsDown;
 
 
-		void Awake()
+		static HandTool()
 		{
-			foreach (GameObject eachTarget in targets)
+			// Register callback.
+			SceneView.onSceneGUIDelegate += _OnSceneGUI;
+		}
+
+		static void _OnSceneGUI(SceneView sceneView)
+		{
+			Event event_ = Event.current;
+			bool space = (event_.keyCode == KeyCode.Space);
+
+			// If space pressed.
+			if (event_.type == EventType.keyDown && space)
 			{
-				if (eachTarget == null) continue;
-				eachTarget.SetActive(true);
+				// Save current `Tool` selection (only at the first event).
+				if (spaceIsDown == false) { previousTool = Tools.current; }
+
+				Tools.current = Tool.View; // Set Hand tool
+				Event.current.Use(); // Consume event
+				spaceIsDown = true; // Flag
+			}
+
+			// If space released.
+			if (event_.type == EventType.keyUp && space)
+			{
+				Tools.current = previousTool;
+				Event.current.Use(); // Consume event
+				spaceIsDown = false; // Flag
 			}
 		}
 	}
