@@ -1,4 +1,5 @@
 # eppz.Utils
+> part of [**Unity.Library.eppz**](https://github.com/eppz/Unity.Library.eppz)
 
 * [`ActivateOnAwake.cs`](ActivateOnAwake.cs)
 
