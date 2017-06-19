@@ -1,5 +1,9 @@
 # eppz.Utils
 
+* 0.0.4
+
+	+ `Define.cs` to indicate library presence
+
 * 0.0.3
 
 	+ Ignore `.meta` files (no value for script assets)
