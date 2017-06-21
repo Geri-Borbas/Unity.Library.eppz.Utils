@@ -19,7 +19,7 @@ namespace EPPZ.Utils
 	{
 
 
-		const string define = "EPPZ_UTILS_IS_AVAILABLE";
+		const string define = "EPPZ_UTILS";
 
 
 		static Define()

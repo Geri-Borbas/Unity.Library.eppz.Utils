@@ -1,4 +1,8 @@
-# eppz.Utils
+# eppz! `Utils`
+
+* 0.0.5
+
+	+ `Define.cs` renaming
 
 * 0.0.4
 
