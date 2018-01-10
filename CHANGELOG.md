@@ -1,5 +1,9 @@
 # eppz! `Utils`
 
+* 0.0.6
+
+	+ API Update
+
 * 0.0.5
 
 	+ `Define.cs` renaming

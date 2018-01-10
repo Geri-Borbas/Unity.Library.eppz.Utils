@@ -35,7 +35,7 @@ namespace EPPZ.Utils.Editor
 			bool space = (event_.keyCode == KeyCode.Space);
 
 			// If space pressed.
-			if (event_.type == EventType.keyDown && space)
+			if (event_.type == EventType.KeyDown && space)
 			{
 				// Save current `Tool` selection (only at the first event).
 				if (spaceIsDown == false) { previousTool = Tools.current; }
@@ -46,7 +46,7 @@ namespace EPPZ.Utils.Editor
 			}
 
 			// If space released.
-			if (event_.type == EventType.keyUp && space)
+			if (event_.type == EventType.KeyUp && space)
 			{
 				Tools.current = previousTool;
 				Event.current.Use(); // Consume event
